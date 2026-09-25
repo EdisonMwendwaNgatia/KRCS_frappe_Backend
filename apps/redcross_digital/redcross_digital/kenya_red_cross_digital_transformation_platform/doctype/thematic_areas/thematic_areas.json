@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 19:26:44.571944",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_pwet",
+  "external_id",
+  "slug",
+  "number",
+  "title",
+  "short_title",
+  "tag_line",
+  "description",
+  "detailed_description",
+  "capabilities",
+  "impact_metrics",
+  "icon_name",
+  "featured_image_url"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_pwet",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External Id",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Slug",
+   "reqd": 1
+  },
+  {
+   "fieldname": "number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "short_title",
+   "fieldtype": "Text Editor",
+   "label": "Short Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tag_line",
+   "fieldtype": "Text Editor",
+   "label": "Tag Line",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "detailed_description",
+   "fieldtype": "Text Editor",
+   "label": "Detailed Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capabilities",
+   "fieldtype": "JSON",
+   "label": "Capabilities",
+   "reqd": 1
+  },
+  {
+   "fieldname": "impact_metrics",
+   "fieldtype": "JSON",
+   "label": "Impact Metrics",
+   "reqd": 1
+  },
+  {
+   "fieldname": "icon_name",
+   "fieldtype": "Data",
+   "label": "Icon Name"
+  },
+  {
+   "fieldname": "featured_image_url",
+   "fieldtype": "Data",
+   "label": "Featured Image URL"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:34:56.046048",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Thematic Areas",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "p1",
+    "slug": "kelvin-njenga",
+    "name": "Kelvin Njenga",
+    "role": "Senior Digital Transformation Officer",
+    "department": "Leadership",
+    "bio": "Kelvin Njenga is a digital transformation specialist with over seven years of experience in technology, product management, and digital innovation within the humanitarian sector.\n\nAt Kenya Red Cross Society, he supports the implementation of the organization’s digital transformation strategy and leads the development of digital solutions that improve operational efficiency and respond to organizational needs.\n\nHis work focuses on strengthening organizational capability, improving service delivery, enhancing information management, and promoting strong data and digital governance practices.",
+    "shortBio": "Digital transformation specialist leading the implementation of digital solutions and data governance at KRCS.",
+    "avatar": "/assets/images/people/njenga.png",
+    "expertise": [
+      "Digital Transformation Strategy",
+      "Digital Product Management",
+      "Information Management and Data Governance",
+      "Digital Innovation"
+    ],
+    "linkedin": "https://www.linkedin.com/in/njengasheba/",
+    "github": "https://github.com/NjengaSheba",
+    "featured": true
+  },
+  {
+    "id": "p2",
+    "slug": "mitchell-njeri",
+    "name": "Mitchell Njeri",
+    "role": "Product Manager",
+    "department": "Product",
+    "bio": "Mitchell Njeri leads the full product lifecycle of KRCS digital platforms, from initial concept and stakeholder engagement to development, deployment, and continuous improvement. Her approach is grounded in listening: understanding the day-to-day needs of users, refining requirements, and translating them into systems that are practical, sustainable, and well-documented.\n\nAcross the platforms she has managed at KRCS, she has consistently balanced what is technically possible with what people genuinely need, ensuring that KRCS’s digital tools are not just functional, but truly useful in supporting humanitarian work.",
+    "shortBio": "Product Manager leading full product lifecycle and user-centered digital solutions at KRCS.",
+    "avatar": "/assets/images/people/mitchell.png",
+    "expertise": [
+      "Product Management & Product Lifecycle Development",
+      "Stakeholder Engagement & Requirements Engineering"
+    ],
+    "linkedin": "https://www.linkedin.com/in/mitchell-njeri-2a0027254/",
+    "featured": true
+  },
+  {
+    "id": "p3",
+    "slug": "nigel-nasser",
+    "name": "Nigel Nasser",
+    "role": "Software Developer",
+    "department": "Technology",
+    "bio": "Nigel Nasser is a software developer with experience in Python, JavaScript, and Java. At Kenya Red Cross Society, he has contributed to the Prequalification Platform, donations systems, and anticipatory action tools, supporting the organization’s operational and humanitarian work.\n\nHis work focuses on translating requirements into software, resolving technical challenges, and maintaining clear, well-structured code. He considers how systems will be used, maintained, and extended as requirements change. His interest in programming comes from working through problems and building software that serves a practical purpose.",
+    "shortBio": "Software developer focused on backend systems, Frappe/ERPNext, and cloud services for humanitarian platforms.",
+    "avatar": "/assets/images/people/nigel.jpeg",
+    "expertise": [
+      "Backend Development (Python, JavaScript, Java)",
+      "Frappe & ERPNext Development",
+      "Digital Platform Development",
+      "Cloud Services (AWS)"
+    ],
+    "github": "https://github.com/nigel-codes",
+    "featured": true
+  },
+  {
+    "id": "p4",
+    "slug": "lennox-mwita",
+    "name": "Lennox Mwita",
+    "role": "Software Developer",
+    "department": "Technology",
+    "bio": "Lennox Mwita is a full-stack software developer with hands-on experience across payments, data engineering, and DevOps. He builds production systems end to end in Golang, Python, TypeScript, and JavaScript, and has shipped backend services and integrations for organizations including Kenya Red Cross Society, spanning M-Pesa Daraja and PesaLink payment integrations, USSD and SMS platforms, and ERPNext/Frappe applications.\n\nExperienced working across the stack with React, Next.js, Flutter for mobile, and Django, he applies Git, Docker, and cloud platforms such as AWS and Azure to deliver consistent, well-tested deployments. He brings the same attention to detail to resolving technical issues as he does to ensuring reliable system integrations.",
+    "shortBio": "Full-stack developer experienced in fintech payments, data engineering, ERPNext, and cloud deployments.",
+    "avatar": "/assets/images/people/lennox.jpeg",
+    "expertise": [
+      "Full-Stack Development (Golang, Python, TypeScript, React, Django, Flutter)",
+      "Payments & Fintech Integrations (M-Pesa Daraja, PesaLink)",
+      "Data Engineering & SQL Reporting",
+      "Cloud & DevOps (AWS, Azure, Docker, CI/CD)"
+    ],
+    "linkedin": "https://www.linkedin.com/in/lennox-mwita/",
+    "github": "https://github.com/mwita-lnx",
+    "featured": true
+  },
+  {
+    "id": "p5",
+    "slug": "yasmina-hussein",
+    "name": "Yasmina Hussein",
+    "role": "Digital Transformation Volunteer",
+    "department": "Volunteers",
+    "isVolunteer": true,
+    "bio": "Yasmina provides frontline digital support across KRCS systems, helping users resolve issues efficiently and ensuring that reported challenges are properly understood and addressed. She diagnoses user issues, resolves non-technical challenges directly, and coordinates the escalation of technical matters to developers and relevant leadership with clear context and practical insight.\n\nHer experience in User Acceptance Testing (UAT) enables her to assess systems from the user’s perspective, identify gaps and inconsistencies, and contribute to improving the reliability and usability of digital platforms.\n\nShe also brings experience in data visualization, including the development of Power BI dashboards that translate data into clear and meaningful insights. By combining user support, quality assurance, and data visualization, she contributes to ensuring that KRCS digital solutions are not only functional and responsive to user needs, but also support informed decision-making across the organization.",
+    "shortBio": "Digital transformation volunteer facilitating frontline user support, UAT quality assurance, and Power BI visualization.",
+    "avatar": "/assets/images/people/yasmina.jpeg",
+    "expertise": [
+      "Account Management",
+      "Quality Assurance",
+      "Data Visualization"
+    ],
+    "featured": false
+  },
+  {
+    "id": "p6",
+    "slug": "kenneth-ngugi",
+    "name": "Kenneth Ngugi",
+    "role": "IT Systems Consultant",
+    "department": "Technology",
+    "bio": "Kenneth Ngugi develops, implements, and automates IT systems. His work spans developing automation solutions, web scraping solutions, and custom software integrations. He also provides IT technical support and consultancy services, combining hands-on development skills with a broader focus on helping businesses adopt and optimize modern technology solutions.",
+    "shortBio": "IT Systems Consultant specializing in web/mobile automation, custom integrations, and IT strategy.",
+    "avatar": "/assets/images/people/p6.jpeg",
+    "expertise": [
+      "Information Systems",
+      "Web and Mobile Automation",
+      "IT Consultancy & Technical Support"
+    ],
+    "linkedin": "https://www.linkedin.com/in/kenneth-ngugi-kkn/",
+    "github": "https://github.com/k-neth",
+    "featured": false
+  },
+  {
+    "id": "p7",
+    "slug": "edison-mwendwa",
+    "name": "Edison Mwendwa",
+    "role": "Software Developer Volunteer",
+    "department": "Volunteers",
+    "isVolunteer": true,
+    "bio": "Software Developer with experience in designing, developing, and deploying web and mobile applications that support digital transformation and operational efficiency. Skilled in building user-focused solutions, integrating databases and APIs, and developing scalable digital systems. Experienced across frontend and backend development, with a strong interest in using technology to solve real-world organizational and community challenges.",
+    "shortBio": "Software developer volunteer focused on scalable web/mobile applications and API integrations.",
+    "avatar": "/assets/images/people/edison.jpeg",
+    "expertise": [
+      "Web Application Development",
+      "Mobile Application Development",
+      "Database & API Integration",
+      "Systems & Digital Solutions"
+    ],
+    "linkedin": "https://www.linkedin.com/in/edison-ngatia-aa250a34b",
+    "github": "https://github.com/EdisonMwendwaNgatia",
+    "featured": false
+  },
+  {
+    "id": "p8",
+    "slug": "mohamed-bahero",
+    "name": "Mohamed Bahero",
+    "role": "Digital Innovation Officer",
+    "department": "Contributors",
+    "bio": "Mohamed Bahero leads and supports the design, testing, and implementation of digital and community-led innovations that respond to humanitarian and development challenges. His work at ICHA has included initiatives focused on community inclusion currencies, dignified digital identity, STEAM education, youth and women’s economic empowerment, and urban resilience.\n\nHe works with communities and partners to apply approaches including human-centred design, systems thinking, and prototyping to develop practical, locally relevant solutions. His experience also spans community engagement and accountability, facilitation, project management, and partnership coordination, with a strong focus on using innovation to strengthen community resilience.",
+    "shortBio": "Digital Innovation Officer designing community-led humanitarian tech, human-centered design, and data protection.",
+    "avatar": "/assets/images/people/bahero.png",
+    "expertise": [
+      "Digital Innovation",
+      "Human-Centred Design",
+      "Data Protection"
+    ],
+    "linkedin": "https://www.linkedin.com/in/mohamed-bahero-40386999/",
+    "featured": false
+  }
+]

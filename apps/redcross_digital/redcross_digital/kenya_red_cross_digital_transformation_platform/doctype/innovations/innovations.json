@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-25 17:12:28.622658",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_21lz",
+  "external_id",
+  "title",
+  "what_we_tested",
+  "why_we_tested",
+  "what_we_learned",
+  "what_worked",
+  "what_didnt_work",
+  "what_to_improve",
+  "recommendation"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_21lz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External_ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "what_we_tested",
+   "fieldtype": "Text Editor",
+   "label": "What We Tested"
+  },
+  {
+   "fieldname": "why_we_tested",
+   "fieldtype": "Text Editor",
+   "label": "Why we tested"
+  },
+  {
+   "fieldname": "what_we_learned",
+   "fieldtype": "Text Editor",
+   "label": "what we learned"
+  },
+  {
+   "fieldname": "what_worked",
+   "fieldtype": "Text Editor",
+   "label": "what worked"
+  },
+  {
+   "fieldname": "what_didnt_work",
+   "fieldtype": "Text Editor",
+   "label": "what Didnt Work"
+  },
+  {
+   "fieldname": "what_to_improve",
+   "fieldtype": "Text Editor",
+   "label": "what to improve"
+  },
+  {
+   "fieldname": "recommendation",
+   "fieldtype": "Text Editor",
+   "label": "Recommendation"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:36:22.570228",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Innovations",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

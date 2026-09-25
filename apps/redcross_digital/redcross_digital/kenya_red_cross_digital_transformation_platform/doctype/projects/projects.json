@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 18:55:34.485706",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_qdu6",
+  "external_id",
+  "slug",
+  "title",
+  "category",
+  "year",
+  "description",
+  "short_description",
+  "challange",
+  "solution",
+  "impact",
+  "impact_metrics",
+  "technologies",
+  "thematic_area_slug",
+  "countries",
+  "team_ids",
+  "partner_ids",
+  "featured",
+  "image",
+  "gallery",
+  "demo_url",
+  "github_url"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_qdu6",
+   "fieldtype": "Section Break",
+   "label": "Project Information",
+   "options": "project_information"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External Id",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Slug",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Digital Products\nData Services\nPlatforms\nMobile\nGIS\nAI",
+   "reqd": 1
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "fieldname": "challange",
+   "fieldtype": "Text Editor",
+   "label": "Challange"
+  },
+  {
+   "fieldname": "solution",
+   "fieldtype": "Text Editor",
+   "label": "Solution"
+  },
+  {
+   "fieldname": "impact",
+   "fieldtype": "Text Editor",
+   "label": "Impact"
+  },
+  {
+   "fieldname": "impact_metrics",
+   "fieldtype": "JSON",
+   "label": "Impact Metrics"
+  },
+  {
+   "fieldname": "technologies",
+   "fieldtype": "JSON",
+   "label": "Technologies"
+  },
+  {
+   "fieldname": "thematic_area_slug",
+   "fieldtype": "Data",
+   "label": "Thematic Area Slug"
+  },
+  {
+   "fieldname": "countries",
+   "fieldtype": "JSON",
+   "label": "Countries"
+  },
+  {
+   "fieldname": "team_ids",
+   "fieldtype": "JSON",
+   "label": "Team IDs"
+  },
+  {
+   "fieldname": "partner_ids",
+   "fieldtype": "JSON",
+   "label": "Partner IDs"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "gallery",
+   "fieldtype": "JSON",
+   "label": "Gallery"
+  },
+  {
+   "fieldname": "demo_url",
+   "fieldtype": "Data",
+   "label": "Demo URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "github_url",
+   "fieldtype": "Data",
+   "label": "Github URL",
+   "options": "URL"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:34:41.635784",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Projects",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

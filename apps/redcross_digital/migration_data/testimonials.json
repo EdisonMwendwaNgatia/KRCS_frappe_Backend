@@ -1,0 +1,112 @@
+[
+  {
+    "id": "t1",
+    "quote": "The Volunteer and Membership Management System (VMMS) completely transformed how our branch deploys responders during flash floods. What used to take days of phone calls and manual rosters now takes minutes to mobilize verified volunteers.",
+    "authorName": "Hassan Mohamed",
+    "authorRole": "County Operations Coordinator",
+    "organization": "Kenya Red Cross Tana River Branch",
+    "location": "Hola, Tana River County",
+    "avatar": "/assets/images/people/p1.jpeg",
+    "category": "County Leadership",
+    "featured": true
+  },
+  {
+    "id": "t2",
+    "quote": "Transitioning to the digital Donations Platform turned our emergency fundraising campaigns from paper-heavy tracking into real-time transparent contributions. Donors can instantly support disaster relief with M-PESA and card payments.",
+    "authorName": "Halima Abdi",
+    "authorRole": "Fundraising & Partnerships Officer",
+    "organization": "Kenya Red Cross Headquarters",
+    "location": "Nairobi, Kenya",
+    "avatar": "/assets/images/people/p2.jpeg",
+    "category": "Field Operations",
+    "featured": true
+  },
+  {
+    "id": "t3",
+    "quote": "The Community-Based Surveillance (CBS) platform connects frontline health alerts directly to our rapid response teams. We receive early disease indicators in real-time before outbreaks escalate in remote pastoralist communities.",
+    "authorName": "Dr. Maria Santos",
+    "authorRole": "Surveillance & Health Lead",
+    "organization": "IFRC Health & Care Team",
+    "location": "Geneva, Switzerland",
+    "avatar": "/assets/images/people/p3.jpeg",
+    "category": "International Partner",
+    "featured": true
+  },
+  {
+    "id": "t4",
+    "quote": "Using the Prequalification Platform digitised our entire vendor evaluation pipeline. Local suppliers submit their compliance documentation online, cutting processing turnaround times by more than 70%.",
+    "authorName": "Faith Naisula",
+    "authorRole": "Supply Chain & Procurement Lead",
+    "organization": "Logistics Unit, KRCS",
+    "location": "Garissa, Kenya",
+    "avatar": "/assets/images/people/p4.jpeg",
+    "category": "Procurement & Logistics",
+    "featured": true
+  },
+  {
+    "id": "t5",
+    "quote": "The Anticipatory Action platform gives us early forecast triggers before climate shocks strike. Receiving early warnings and pre-agreed action protocols allows county teams to protect lives and livestock ahead of extreme weather.",
+    "authorName": "Dr. James Omondi",
+    "authorRole": "Climate & Preparedness Officer",
+    "organization": "Disaster Risk Management Unit",
+    "location": "Kisumu, Kenya",
+    "avatar": "/assets/images/people/p5.jpeg",
+    "category": "County Leadership",
+    "featured": true
+  },
+  {
+    "id": "t6",
+    "quote": "The Africa Localisation Hub provides an open digital space to showcase community-led humanitarian solutions. Accessing shared toolkits and case studies has strengthened cross-border learning for national societies.",
+    "authorName": "Amina Khalfan",
+    "authorRole": "Localisation & Policy Advisor",
+    "organization": "Pan-African Red Cross Network",
+    "location": "Mombasa, Kenya",
+    "avatar": "/assets/images/people/p6.jpeg",
+    "category": "Regional Partner",
+    "featured": true
+  },
+  {
+    "id": "t7",
+    "quote": "With VMMS, our field volunteers access accredited training modules and track deployment history right from their phones, giving us unprecedented volunteer readiness during national emergencies.",
+    "authorName": "David Kiprop",
+    "authorRole": "Senior Youth & Volunteer Officer",
+    "organization": "Kenya Red Cross Rift Valley Region",
+    "location": "Nakuru, Kenya",
+    "avatar": "/assets/images/people/p7.jpeg",
+    "category": "Volunteer Management",
+    "featured": true
+  },
+  {
+    "id": "t8",
+    "quote": "Integrating CBS with local health volunteers has fundamentally reduced our response latency during disease outbreaks, protecting thousands of families with timely health interventions.",
+    "authorName": "Grace Wambui",
+    "authorRole": "Community Health Coordinator",
+    "organization": "Ministry of Health Partner Unit",
+    "location": "Nyeri, Kenya",
+    "avatar": "/assets/images/people/p8.jpeg",
+    "category": "Health & Surveillance",
+    "featured": true
+  },
+  {
+    "id": "t9",
+    "quote": "The Donations Platform's instant digital receipting and campaign analytics have built high trust with corporate partners and individual donors across Kenya.",
+    "authorName": "Peter Ochieng",
+    "authorRole": "Corporate Relations Manager",
+    "organization": "Digital Philanthropy Group",
+    "location": "Nairobi, Kenya",
+    "avatar": "/assets/images/people/p9.jpeg",
+    "category": "Strategic Partnerships",
+    "featured": true
+  },
+  {
+    "id": "t10",
+    "quote": "Deploying the Anticipatory Action framework helped our emergency units disburse emergency cash support before severe flooding displaced families in the Tana Delta.",
+    "authorName": "Zainab Hussein",
+    "authorRole": "Field Cash Assistance Officer",
+    "organization": "Humanitarian Cash Assistance Unit",
+    "location": "Garissa, Kenya",
+    "avatar": "/assets/images/people/p10.jpeg",
+    "category": "Field Operations",
+    "featured": true
+  }
+]

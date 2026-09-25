@@ -1,0 +1,21 @@
+{
+    "frappe": {
+        "resolution": {
+            "commit_hash": null,
+            "branch": null
+        },
+        "required": [],
+        "idx": 1,
+        "version": "16.35.0"
+    },
+    "redcross_digital": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "5145cc6d7d363b0e0f6e9ea4ad3b31dfa58a377e",
+            "branch": "version-16"
+        },
+        "required": [],
+        "idx": 2,
+        "version": "0.0.1"
+    }
+}

@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 19:41:59.575896",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "partner_information",
+  "external_id",
+  "partner_name",
+  "category",
+  "logo",
+  "description",
+  "website",
+  "collaboration_focus",
+  "featured"
+ ],
+ "fields": [
+  {
+   "fieldname": "partner_information",
+   "fieldtype": "Section Break",
+   "label": "Partner Information"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "partner_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Partner Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Strategic\nTechnology\nImplementation\nFunding",
+   "reqd": 1
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "collaboration_focus",
+   "fieldtype": "Small Text",
+   "label": "Collaboration Focus"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:35:14.992382",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Partners",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "partner_name"
+}

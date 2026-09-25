@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 18:18:30.881567",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "information",
+  "external_id",
+  "slug",
+  "full_name",
+  "role",
+  "department",
+  "is_volunteer",
+  "short_bio",
+  "bio",
+  "avatar",
+  "expertise",
+  "email",
+  "linkedin",
+  "twitter",
+  "github",
+  "featured"
+ ],
+ "fields": [
+  {
+   "fieldname": "information",
+   "fieldtype": "Section Break",
+   "label": "Information"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Slug",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Role",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Select",
+   "label": "Department",
+   "options": "Leadership\nTechnology\nData\nGIS\nProduct\nOperations\nContributors\nVolunteers",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_volunteer",
+   "fieldtype": "Check",
+   "label": "Is Volunteer"
+  },
+  {
+   "fieldname": "short_bio",
+   "fieldtype": "Small Text",
+   "label": "Short Bio"
+  },
+  {
+   "fieldname": "bio",
+   "fieldtype": "Text Editor",
+   "label": "Bio"
+  },
+  {
+   "fieldname": "avatar",
+   "fieldtype": "Attach Image",
+   "label": "Avatar"
+  },
+  {
+   "fieldname": "expertise",
+   "fieldtype": "JSON",
+   "label": "Expertise"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "linkedin",
+   "fieldtype": "Data",
+   "label": "LinkedIn",
+   "options": "URL"
+  },
+  {
+   "fieldname": "twitter",
+   "fieldtype": "Data",
+   "label": "Twitter",
+   "options": "URL"
+  },
+  {
+   "fieldname": "github",
+   "fieldtype": "Data",
+   "label": "GitHub",
+   "options": "URL"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:34:25.174003",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Person",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name"
+}

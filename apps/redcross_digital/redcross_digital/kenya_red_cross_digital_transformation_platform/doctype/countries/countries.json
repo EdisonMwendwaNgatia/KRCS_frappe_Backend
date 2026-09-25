@@ -1,0 +1,161 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 20:32:05.590861",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "country_information",
+  "external_id",
+  "code",
+  "country_name",
+  "region",
+  "is_active",
+  "short_description",
+  "active_initiatives_count",
+  "digital_products_count",
+  "data_services_count",
+  "key_initiatives",
+  "coordinates",
+  "partner",
+  "since",
+  "image",
+  "image_alt",
+  "field_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "country_information",
+   "fieldtype": "Section Break",
+   "label": "Country Information"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Country Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "Region"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "IsActive"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "fieldname": "active_initiatives_count",
+   "fieldtype": "Int",
+   "label": "Active Initiatives Count"
+  },
+  {
+   "fieldname": "digital_products_count",
+   "fieldtype": "Int",
+   "label": "Digital Products Count"
+  },
+  {
+   "fieldname": "data_services_count",
+   "fieldtype": "Int",
+   "label": "Data Services Count"
+  },
+  {
+   "fieldname": "key_initiatives",
+   "fieldtype": "JSON",
+   "label": "Key Initiatives"
+  },
+  {
+   "fieldname": "coordinates",
+   "fieldtype": "JSON",
+   "label": "Coordinates"
+  },
+  {
+   "fieldname": "partner",
+   "fieldtype": "Data",
+   "label": "Partner"
+  },
+  {
+   "fieldname": "since",
+   "fieldtype": "Int",
+   "label": "Since"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "image_alt",
+   "fieldtype": "Small Text",
+   "label": "Image Alt"
+  },
+  {
+   "fieldname": "field_note",
+   "fieldtype": "Text Editor",
+   "label": "Field Note"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:35:29.949810",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Countries",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "country_name"
+}

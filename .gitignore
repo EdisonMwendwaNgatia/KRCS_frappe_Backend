@@ -1,0 +1,27 @@
+env/
+logs/
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.swp
+.DS_Store
+
+# Upstream Frappe framework (not committed — installed separately via bench)
+apps/frappe/
+
+# Site secrets (contains database credentials)
+sites/*/site_config.json
+
+# Local development site (environment-specific)
+sites/redcross.local/
+
+# Generated static assets
+sites/assets/
+
+# Runtime files
+config/pids/
+
+# Nested git metadata (backed up, not a real submodule)
+apps/redcross_digital/.git_backup/

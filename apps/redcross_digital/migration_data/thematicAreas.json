@@ -1,0 +1,282 @@
+[
+  {
+    "id": "digital-systems",
+    "slug": "digital-systems",
+    "number": "01",
+    "title": "Digital Systems",
+    "shortTitle": "Digital Systems",
+    "tagline": "We support the development and adoption of digital systems that are accessible, usable and aligned with organisational needs.",
+    "description": "We support the development and adoption of digital systems that are accessible, usable and aligned with organisational needs.",
+    "detailedDescription": "Our focus includes improving workflows, connecting information across departments and supporting digital services that can be used across headquarters, regions and branches.",
+    "capabilities": [
+      {
+        "title": "Workflow Optimization",
+        "description": "Improving operational workflows to connect headquarters, regional offices, and local branches seamlessly."
+      },
+      {
+        "title": "Cross-Departmental Integration",
+        "description": "Connecting information flows across departments to eliminate silos and improve coordination."
+      },
+      {
+        "title": "Accessible Digital Services",
+        "description": "Supporting digital services designed for field usability, reliability, and high user adoption."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Reach",
+        "value": "HQ, Regions & Branches"
+      },
+      {
+        "label": "Focus Area",
+        "value": "Workflow & Systems"
+      },
+      {
+        "label": "Core Goal",
+        "value": "Accessible & Usable"
+      }
+    ],
+    "iconName": "Layers",
+    "featuredImageUrl": "/assets/images/what-we-do/digital_products.jpg"
+  },
+  {
+    "id": "data-analytics",
+    "slug": "data-analytics",
+    "number": "02",
+    "title": "Data & Analytics",
+    "shortTitle": "Data & Analytics",
+    "tagline": "We promote responsible data management and the use of data to support informed decision-making.",
+    "description": "We promote responsible data management and the use of data to support informed decision-making.",
+    "detailedDescription": "This includes strengthening data governance, improving information management, supporting analytics and working towards better integration of data across the organisation.",
+    "capabilities": [
+      {
+        "title": "Data Governance & Ethics",
+        "description": "Strengthening data governance, privacy protocols, and responsible data management practices."
+      },
+      {
+        "title": "Information Management",
+        "description": "Improving data quality, standardization, and integration across organizational units."
+      },
+      {
+        "title": "Decision Support Analytics",
+        "description": "Developing operational dashboards and analytical models to guide evidence-based decisions."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Governance",
+        "value": "Responsible & Ethical"
+      },
+      {
+        "label": "Analytics",
+        "value": "Informed Decisions"
+      },
+      {
+        "label": "Integration",
+        "value": "Organization-Wide"
+      }
+    ],
+    "iconName": "BarChart3",
+    "featuredImageUrl": "/assets/images/what-we-do/data_analytics.jpg"
+  },
+  {
+    "id": "innovation",
+    "slug": "innovation",
+    "number": "03",
+    "title": "Innovation",
+    "shortTitle": "Innovation",
+    "tagline": "We encourage the exploration, testing and adoption of digital approaches that can help address humanitarian challenges.",
+    "description": "We encourage the exploration, testing and adoption of digital approaches that can help address humanitarian challenges.",
+    "detailedDescription": "This includes research and development, emerging technologies, data analytics and opportunities for staff, volunteers, communities and partners to contribute to digital innovation.",
+    "capabilities": [
+      {
+        "title": "Research & Development",
+        "description": "Exploring and testing emerging technologies tailored to address complex humanitarian needs."
+      },
+      {
+        "title": "Emerging Technologies",
+        "description": "Piloting AI, IoT telemetry, and frontier digital tools in real-world field conditions."
+      },
+      {
+        "title": "Inclusive Co-Creation",
+        "description": "Creating opportunities for staff, volunteers, communities, and partners to co-create digital solutions."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Approach",
+        "value": "R&D & Emerging Tech"
+      },
+      {
+        "label": "Participation",
+        "value": "Staff, Community & Partners"
+      },
+      {
+        "label": "Impact",
+        "value": "Humanitarian Solutions"
+      }
+    ],
+    "iconName": "Sparkles",
+    "featuredImageUrl": "/assets/images/what-we-do/digtal_innovation.jpg"
+  },
+  {
+    "id": "digital-skills",
+    "slug": "digital-skills",
+    "number": "04",
+    "title": "Digital Skills",
+    "shortTitle": "Digital Skills",
+    "tagline": "We support staff and volunteers to develop the digital and data skills required to work effectively with new tools and processes.",
+    "description": "We support staff and volunteers to develop the digital and data skills required to work effectively with new tools and processes.",
+    "detailedDescription": "This includes digital literacy, data literacy, cybersecurity awareness, training and peer learning.",
+    "capabilities": [
+      {
+        "title": "Digital & Data Literacy",
+        "description": "Equipping staff and volunteers with practical skills to navigate digital platforms and data tools."
+      },
+      {
+        "title": "Cybersecurity Awareness",
+        "description": "Fostering awareness and best practices for safe data handling, privacy, and digital security."
+      },
+      {
+        "title": "Training & Peer Learning",
+        "description": "Delivering structured training workshops and peer mentorship programs across regions and branches."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Target",
+        "value": "Staff & Volunteers"
+      },
+      {
+        "label": "Focus",
+        "value": "Literacy & Cybersecurity"
+      },
+      {
+        "label": "Method",
+        "value": "Training & Peer Learning"
+      }
+    ],
+    "iconName": "GraduationCap",
+    "featuredImageUrl": "/assets/images/dt_updates/teaching.jpg"
+  },
+  {
+    "id": "community-digital-transformation",
+    "slug": "community-digital-transformation",
+    "number": "05",
+    "title": "Community Digital Transformation",
+    "shortTitle": "Community Digital",
+    "tagline": "We aim to ensure that digital solutions respond to the needs of the communities they are intended to serve.",
+    "description": "We aim to ensure that digital solutions respond to the needs of the communities they are intended to serve.",
+    "detailedDescription": "Community engagement, accessibility, feedback and co-creation are therefore important parts of our digital transformation approach.",
+    "capabilities": [
+      {
+        "title": "Community Engagement",
+        "description": "Ensuring community voices actively shape digital initiatives and user experience requirements."
+      },
+      {
+        "title": "Accessibility & Inclusion",
+        "description": "Designing solutions accessible across diverse languages, literacy levels, and technical infrastructure."
+      },
+      {
+        "title": "Feedback & Co-Creation",
+        "description": "Embedding continuous community feedback loops to refine and validate digital tools in action."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Approach",
+        "value": "Community-Centred"
+      },
+      {
+        "label": "Pillars",
+        "value": "Accessibility & Feedback"
+      },
+      {
+        "label": "Process",
+        "value": "Co-Creation in Action"
+      }
+    ],
+    "iconName": "Users",
+    "featuredImageUrl": "/assets/images/dt_updates/whites.jpg"
+  },
+  {
+    "id": "partnerships",
+    "slug": "partnerships",
+    "number": "06",
+    "title": "Partnerships",
+    "shortTitle": "Partnerships",
+    "tagline": "Digital transformation requires collaboration.",
+    "description": "Digital transformation requires collaboration.",
+    "detailedDescription": "We work with relevant partners across the public, private, academic, humanitarian and civil society sectors to strengthen knowledge, capacity, resources and innovation.",
+    "capabilities": [
+      {
+        "title": "Cross-Sector Alliances",
+        "description": "Collaborating across public, private, academic, humanitarian, and civil society sectors."
+      },
+      {
+        "title": "Capacity & Resource Sharing",
+        "description": "Combining expertise and resources to scale digital tools and strengthen organizational capacity."
+      },
+      {
+        "title": "Knowledge & Innovation Exchange",
+        "description": "Co-developing standards, joint research, and shared technology solutions for humanitarian impact."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Scope",
+        "value": "Cross-Sector Alliances"
+      },
+      {
+        "label": "Sectors",
+        "value": "Public, Private, Academic & NGO"
+      },
+      {
+        "label": "Goal",
+        "value": "Capacity & Shared Tech"
+      }
+    ],
+    "iconName": "Handshake",
+    "featuredImageUrl": "/assets/images/dt_updates/meeting.jpg"
+  },
+  {
+    "id": "resources-knowledge",
+    "slug": "resources-knowledge",
+    "number": "07",
+    "title": "Resources & Knowledge",
+    "shortTitle": "Resources & Knowledge",
+    "tagline": "Curating and sharing digital toolkits, research, and open knowledge to support digital transformation.",
+    "description": "Curating and sharing digital toolkits, research, and open knowledge to support digital transformation.",
+    "detailedDescription": "We support National Societies, field offices, and humanitarian actors by developing open toolkits, research publications, standard operating procedures, and shared digital assets.",
+    "capabilities": [
+      {
+        "title": "Open Digital Toolkits",
+        "description": "Providing standardized guidelines, templates, and standard operating procedures for field teams."
+      },
+      {
+        "title": "Research & Case Studies",
+        "description": "Publishing evidence-based reports and operational evaluations of digital interventions."
+      },
+      {
+        "title": "Shared Knowledge Base",
+        "description": "Maintaining accessible documentation, training materials, and open-source code repositories."
+      }
+    ],
+    "impactMetrics": [
+      {
+        "label": "Sharing",
+        "value": "Open Access & Resources"
+      },
+      {
+        "label": "Assets",
+        "value": "Toolkits, Research & Guides"
+      },
+      {
+        "label": "Reach",
+        "value": "Pan-African Knowledge Base"
+      }
+    ],
+    "iconName": "BookOpen",
+    "featuredImageUrl": "/assets/images/dt_updates/learning.jpg"
+  }
+]

@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:external_id",
+ "creation": "2026-09-23 22:08:44.402830",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_mkee",
+  "external_id",
+  "quote",
+  "author_name",
+  "author_role",
+  "organization",
+  "location",
+  "avatar",
+  "category",
+  "featured"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_mkee",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "quote",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Quote",
+   "reqd": 1
+  },
+  {
+   "fieldname": "author_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Author Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "author_role",
+   "fieldtype": "Data",
+   "label": "Author Role"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Data",
+   "label": "Organization"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "avatar",
+   "fieldtype": "Attach Image",
+   "label": "Avatar"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Field Volunteer\nCounty Leadership\nCommunity Beneficiary\nInternational Partner\nField Operations\nProcurement & Logistics\nRegional Partner\nVolunteer Management\nHealth & Surveillance\nStrategic Partnerships"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-25 19:35:57.658067",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Testimonials",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "author_name"
+}
