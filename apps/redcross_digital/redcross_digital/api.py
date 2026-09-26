@@ -15,6 +15,10 @@ PUBLIC_DOCTYPES = [
     "Person",
     "Feedback",
     "Innovations",
+    # ── KRCS Digital Transformation Platform ──
+    "Knowledge Resource",
+    "Digital Story",
+    "News Item",
 ]
 
 # Fields scrubbed from every response
@@ -24,14 +28,19 @@ BASE_SCRUB = {
     "_assign", "_liked_by", "_seen",
 }
 
+# Fields scrubbed from child-table rows
+CHILD_SCRUB = {
+    "name", "parent", "parentfield", "parenttype",
+    "idx", "docstatus", "owner", "modified_by",
+    "creation", "modified",
+}
+
 # Per-doctype extra scrubbing
 DOCTYPES_SCRUB = {
     "Person": {"email"},   # only PII we collect
 }
 
-# Fields stored as JSON strings in MariaDB (Frappe Table / JSON / Small Text
-# columns that the app writes as serialized JSON). These get parsed into real
-# arrays/objects before being sent to the client.
+
 JSON_FIELDS = {
     "expertise",
     "impact_metrics",
@@ -55,6 +64,27 @@ CACHE_TTL = 300          # seconds
 MAX_LIMIT = 500
 
 
+def _clean_child(child) -> dict:
+    """Scrub internal fields from a child-table row."""
+    if not isinstance(child, dict):
+        return child
+
+    out = {}
+    for key, value in child.items():
+        if key in CHILD_SCRUB:
+            continue
+
+        if key in JSON_FIELDS and isinstance(value, str):
+            try:
+                value = json.loads(value)
+            except (json.JSONDecodeError, TypeError):
+                pass
+
+        out[key] = value
+
+    return out
+
+
 def _clean(doctype: str, row: dict) -> dict:
     """Strip internal fields and deserialize JSON-encoded columns."""
     drop = BASE_SCRUB | DOCTYPES_SCRUB.get(doctype, set())
@@ -70,6 +100,10 @@ def _clean(doctype: str, row: dict) -> dict:
             except (json.JSONDecodeError, TypeError):
                 # Not valid JSON — leave the raw string alone.
                 pass
+
+        # Recurse into child-table arrays (Table / Table MultiSelect fields)
+        if isinstance(value, list):
+            value = [_clean_child(c) for c in value]
 
         cleaned[key] = value
 
@@ -266,3 +300,62 @@ def submit_feedback():
         "name": doc.name,
         "message": "Feedback record created in MariaDB."
     }
+
+
+def _submission_payload():
+    """Read a JSON submission body, falling back to form fields."""
+    if frappe.request and frappe.request.data:
+        try:
+            return json.loads(frappe.request.data)
+        except (TypeError, ValueError):
+            pass
+    return frappe.form_dict
+
+
+def _required_submission_fields(data, fields):
+    missing = [field for field in fields if not str(data.get(field) or "").strip()]
+    if missing:
+        frappe.throw("Required fields: " + ", ".join(missing))
+
+
+@frappe.whitelist(allow_guest=True)
+def submit_inquiry():
+    """Persist a public general contact inquiry without granting Guest DocType access."""
+    data = _submission_payload()
+    _required_submission_fields(data, ("full_name", "email", "subject", "message"))
+    doc = frappe.get_doc({
+        "doctype": "Inquiry",
+        "full_name": str(data["full_name"]).strip(),
+        "email": str(data["email"]).strip(),
+        "phone": str(data.get("phone") or "").strip(),
+        "organization": str(data.get("organization") or "").strip(),
+        "subject": str(data["subject"]).strip(),
+        "message": str(data["message"]).strip(),
+        "status": "New",
+        "submitted_at": frappe.utils.now_datetime(),
+    })
+    doc.insert(ignore_permissions=True)
+    frappe.db.commit()
+    return {"status": "success", "name": doc.name, "message": "Inquiry saved."}
+
+
+@frappe.whitelist(allow_guest=True)
+def submit_partnership_proposal():
+    """Persist a public partnership proposal without granting Guest DocType access."""
+    data = _submission_payload()
+    _required_submission_fields(data, ("organization", "contact_person", "email", "collaboration_area", "proposal_title", "proposal_summary"))
+    doc = frappe.get_doc({
+        "doctype": "Partnership Proposal",
+        "organization": str(data["organization"]).strip(),
+        "contact_person": str(data["contact_person"]).strip(),
+        "email": str(data["email"]).strip(),
+        "phone": str(data.get("phone") or "").strip(),
+        "collaboration_area": str(data["collaboration_area"]).strip(),
+        "proposal_title": str(data["proposal_title"]).strip(),
+        "proposal_summary": str(data["proposal_summary"]).strip(),
+        "status": "New",
+        "submitted_at": frappe.utils.now_datetime(),
+    })
+    doc.insert(ignore_permissions=True)
+    frappe.db.commit()
+    return {"status": "success", "name": doc.name, "message": "Partnership proposal saved."}

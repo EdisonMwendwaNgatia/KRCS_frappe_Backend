@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:story_id",
+ "creation": "2026-09-26 09:03:05.901441",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_identity",
+  "story_id",
+  "slug",
+  "title",
+  "subtitle",
+  "cb_meta",
+  "date",
+  "author",
+  "author_role",
+  "tag",
+  "cover_image",
+  "sb_narrative",
+  "challenge",
+  "people",
+  "solution",
+  "experience",
+  "learning",
+  "impact",
+  "sb_safeguarding",
+  "safeguarding_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_identity",
+   "fieldtype": "Section Break",
+   "label": "Identity"
+  },
+  {
+   "fieldname": "story_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Story ID",
+   "unique": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Slug",
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Small Text",
+   "label": "Subtitle"
+  },
+  {
+   "fieldname": "cb_meta",
+   "fieldtype": "Column Break",
+   "label": "Meta"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Author"
+  },
+  {
+   "fieldname": "author_role",
+   "fieldtype": "Data",
+   "label": "Author Role"
+  },
+  {
+   "fieldname": "tag",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Tag"
+  },
+  {
+   "fieldname": "cover_image",
+   "fieldtype": "Attach Image",
+   "label": "Cover Image"
+  },
+  {
+   "fieldname": "sb_narrative",
+   "fieldtype": "Section Break",
+   "label": "Narrative"
+  },
+  {
+   "fieldname": "challenge",
+   "fieldtype": "Text Editor",
+   "label": "Challenge"
+  },
+  {
+   "fieldname": "people",
+   "fieldtype": "Text Editor",
+   "label": "People"
+  },
+  {
+   "fieldname": "solution",
+   "fieldtype": "Text Editor",
+   "label": "Solution"
+  },
+  {
+   "fieldname": "experience",
+   "fieldtype": "Text Editor",
+   "label": "Experience"
+  },
+  {
+   "fieldname": "learning",
+   "fieldtype": "Text Editor",
+   "label": "Learning"
+  },
+  {
+   "fieldname": "impact",
+   "fieldtype": "Text Editor",
+   "label": "Impact"
+  },
+  {
+   "fieldname": "sb_safeguarding",
+   "fieldtype": "Section Break",
+   "label": "Safeguarding"
+  },
+  {
+   "fieldname": "safeguarding_note",
+   "fieldtype": "Text Editor",
+   "label": "Safeguarding Note"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-26 09:03:56.132240",
+ "modified_by": "Administrator",
+ "module": "Kenya Red Cross Digital Transformation Platform",
+ "name": "Digital Story",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
