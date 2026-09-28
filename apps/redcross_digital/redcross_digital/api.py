@@ -13,7 +13,6 @@ PUBLIC_DOCTYPES = [
     "Thematic Areas",
     "Projects",
     "Person",
-    "Feedback",
     "Innovations",
     # ── KRCS Digital Transformation Platform ──
     "Knowledge Resource",
@@ -216,7 +215,9 @@ def list_all():
 
     GET /api/method/redcross_digital.api.list_all
     """
-    cache_key = "pub_api:list_all"
+    # Version the key so cached responses from earlier releases cannot keep returning
+    # protected submission records that are no longer in the public allowlist.
+    cache_key = "pub_api:list_all:v2"
     cached = frappe.cache().get_value(cache_key)
     if cached:
         return cached

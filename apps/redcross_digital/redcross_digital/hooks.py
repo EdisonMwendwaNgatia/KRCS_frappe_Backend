@@ -144,13 +144,13 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"*": {
+		"after_insert": "redcross_digital.api._bust_cache",
+		"on_update": "redcross_digital.api._bust_cache",
+		"on_trash": "redcross_digital.api._bust_cache",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -261,4 +261,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
