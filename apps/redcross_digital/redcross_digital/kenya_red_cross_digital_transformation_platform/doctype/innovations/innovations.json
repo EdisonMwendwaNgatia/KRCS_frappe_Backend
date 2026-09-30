@@ -10,6 +10,12 @@
   "section_break_21lz",
   "external_id",
   "title",
+  "category",
+  "status",
+  "period",
+  "location",
+  "lead",
+  "team",
   "what_we_tested",
   "why_we_tested",
   "what_we_learned",
@@ -36,6 +42,51 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Artificial Intelligence\nGeospatial Technology\nDigital Health\nClimate Finance\nDigital Learning\nData & Analytics",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Scaled\nAdapted\nDiscontinued\nOngoing\nPilot",
+   "reqd": 1
+  },
+  {
+   "fieldname": "period",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Period",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "Countries",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Person",
+   "reqd": 1
+  },
+  {
+   "default": "Digital Transformation Team",
+   "fieldname": "team",
+   "fieldtype": "Data",
+   "label": "Team",
    "reqd": 1
   },
   {

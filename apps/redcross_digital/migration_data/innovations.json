@@ -2,6 +2,8 @@
   {
     "id": "ip-001",
     "title": "AI-Assisted Rapid Needs Assessment via SMS Chatbot",
+    "category": "Artificial Intelligence",
+    "status": "Adapted",
     "what_we_tested": "A conversational SMS chatbot powered by a fine-tuned LLM to conduct structured household needs assessments in Kiswahili and Turkana dialects, without requiring internet access.",
     "why_we_tested": "Traditional household surveys are time-intensive and require trained enumerators. We wanted to test whether automated SMS outreach could collect high-quality vulnerability data at scale during the 2024 drought response window.",
     "what_we_learned": "Completion rates were 61% — higher than anticipated for first deployment. Dialect gaps in training data caused 18% of responses to be misclassified. Rural respondents preferred short, single-question flows over multi-step dialogue trees.",
@@ -25,6 +27,8 @@
   {
     "id": "ip-002",
     "title": "Drone-Based Flood Damage Mapping in West Pokot",
+    "category": "Geospatial Technology",
+    "status": "Scaled",
     "what_we_tested": "Fixed-wing drone flights across 4,200 km² of flood-affected terrain in West Pokot to generate high-resolution orthomosaic maps and damage classification models, replacing 3-week ground survey campaigns.",
     "why_we_tested": "The 2023 El Niño floods made large areas inaccessible to ground teams. We needed rapid damage quantification to trigger anticipatory finance transfers within 72 hours of peak flooding.",
     "what_we_learned": "Drone-based assessments reduced data collection time from 21 days to 4 days and captured damage in areas completely unreachable by field teams. Classification models achieved 84% accuracy against ground truth validation.",
@@ -49,6 +53,8 @@
   {
     "id": "ip-003",
     "title": "Community Health Worker Digital Supervision Platform",
+    "category": "Digital Health",
+    "status": "Scaled",
     "what_we_tested": "A lightweight Android app for CHW supervisors to conduct remote performance reviews, track household visit rates, and flag at-risk volunteers — replacing fortnightly in-person supervision visits.",
     "why_we_tested": "Supervision costs consumed 22% of the CHW programme budget. Remote supervision was theorised to reduce costs while maintaining quality, allowing reallocation of savings to CHW stipends.",
     "what_we_learned": "Remote supervision reduced programme costs by 34% while maintaining 96% of quality indicators. Supervisors reported increased reach — average caseloads grew from 12 to 19 CHWs per supervisor.",
@@ -72,6 +78,8 @@
   {
     "id": "ip-004",
     "title": "Parametric Flood Insurance for Smallholder Farmers",
+    "category": "Climate Finance",
+    "status": "Pilot",
     "what_we_tested": "A parametric micro-insurance product that automatically triggers payouts when satellite-monitored river levels exceed pre-agreed thresholds, eliminating the traditional claims assessment process for 1,800 smallholder farmers.",
     "why_we_tested": "Traditional insurance claims processes take 45–90 days, long after affected farmers need funds for replanting. Parametric approaches promised payouts within 5 days of trigger events.",
     "what_we_learned": "First trigger event (April 2024) validated the model — 1,247 farmers received M-PESA payouts within 4.2 days of the river gauge threshold being exceeded. Basis risk (paying farmers who weren't actually flooded) affected approximately 12% of beneficiaries.",
@@ -95,6 +103,8 @@
   {
     "id": "ip-005",
     "title": "Offline-First eLearning Platform for Field Volunteers",
+    "category": "Digital Learning",
+    "status": "Adapted",
     "what_we_tested": "An offline-first Progressive Web App (PWA) for volunteer training, delivering 12 core modules in Kiswahili with embedded video, quizzes, and competency assessments — syncing results when connectivity returns.",
     "why_we_tested": "Traditional face-to-face training reaches only 34% of registered volunteers annually due to logistics costs. We hypothesised that a mobile-first approach could increase annual coverage to 70%+.",
     "what_we_learned": "Platform coverage reached 61% of registered volunteers within 4 months. Completion rates varied dramatically by county — urban counties averaged 79% completion; arid/semi-arid land counties averaged 38%.",
@@ -118,6 +128,8 @@
   {
     "id": "ip-006",
     "title": "Real-Time Food Security Dashboard Using Market Price Data",
+    "category": "Data & Analytics",
+    "status": "Scaled",
     "what_we_tested": "An automated pipeline ingesting weekly commodity prices from 340 markets across 23 ASAL counties into a gradient-boosted prediction model to forecast food insecurity classifications 4 weeks ahead of standard IPC reporting cycles.",
     "why_we_tested": "IPC food security updates lag field reality by 6–8 weeks. Anticipatory finance mechanisms require forward-looking data. We wanted to see if market prices alone could serve as a leading indicator.",
     "what_we_learned": "The model predicted IPC Phase 3+ classification with 81% accuracy at a 30-day horizon, outperforming the 60-day FAO baseline model. False positives (over-predictions) were 14%.",

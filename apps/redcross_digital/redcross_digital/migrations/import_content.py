@@ -1,4 +1,6 @@
 import json
+import calendar
+import random
 from pathlib import Path
 from datetime import datetime
 
@@ -346,11 +348,40 @@ def import_testimonials():
 def import_innovations():
     records = load_json("innovations.json")
     created = updated = 0
+    country_names = frappe.get_all("Countries", pluck="name", order_by="name asc")
+    person_names = frappe.get_all("Person", pluck="name", order_by="name asc")
+
+    if not country_names:
+        frappe.throw("Cannot import Innovations: Countries has no records to use for Location links.")
+    if not person_names:
+        frappe.throw("Cannot import Innovations: Person has no records to use for Lead links.")
 
     for item in records:
+        external_id = item.get("id")
+        if not external_id:
+            frappe.throw(f"Innovation record is missing its id: {item.get('title') or item}")
+
+        # Stable pseudo-random assignments keep the import idempotent while still
+        # distributing dates, countries and leads across the existing records.
+        rng = random.Random(str(external_id))
+        start_month_index = rng.randrange(20)  # Jan 2025 through Aug 2026 inclusive
+        end_month_index = rng.randint(start_month_index, min(start_month_index + 5, 19))
+        start_year, start_month = 2025 + start_month_index // 12, start_month_index % 12 + 1
+        end_year, end_month = 2025 + end_month_index // 12, end_month_index % 12 + 1
+        period = (
+            f"{calendar.month_name[start_month]} {start_year} – "
+            f"{calendar.month_name[end_month]} {end_year}"
+        )
+
         values = {
-            "external_id": item.get("id"),
+            "external_id": external_id,
             "title": item.get("title"),
+            "category": item.get("category"),
+            "status": item.get("status"),
+            "period": item.get("period") or period,
+            "location": item.get("location") or rng.choice(country_names),
+            "lead": item.get("lead") or rng.choice(person_names),
+            "team": item.get("team") or "Digital Transformation Team",
             "what_we_tested": item.get("what_we_tested"),
             "why_we_tested": item.get("why_we_tested"),
             "what_we_learned": item.get("what_we_learned"),
@@ -360,7 +391,7 @@ def import_innovations():
             "recommendation": item.get("recommendation"),
         }
 
-        action, name = upsert_doc("Innovations", item.get("id"), values)
+        action, name = upsert_doc("Innovations", external_id, values)
         created += action == "created"
         updated += action == "updated"
         print(f"Innovation {action}: {name}")
