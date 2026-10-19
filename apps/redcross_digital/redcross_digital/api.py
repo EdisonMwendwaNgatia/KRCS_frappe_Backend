@@ -1,7 +1,10 @@
 import json
+import re
 
 import frappe
+from frappe.rate_limiter import rate_limit
 from frappe.utils import cint
+from frappe.utils import validate_email_address
 
 
 PUBLIC_DOCTYPES = [
@@ -61,6 +64,27 @@ JSON_FIELDS = {
 
 CACHE_TTL = 300          # seconds
 MAX_LIMIT = 500
+MAX_SUBMISSION_BODY_BYTES = 24 * 1024
+
+FEEDBACK_SUBMISSION_MODES = {"identified", "anonymous"}
+FEEDBACK_STAKEHOLDER_TYPES = {
+    "staff",
+    "volunteer",
+    "community_member",
+    "partner",
+    "other_stakeholder",
+}
+FEEDBACK_CATEGORIES = {
+    "problem",
+    "accessibility_barrier",
+    "ux_issue",
+    "training_need",
+    "new_idea",
+    "improvement_opportunity",
+    "other",
+}
+FEEDBACK_PLATFORMS = {"web", "mobile_app", "kiosk", "sms", "in_person"}
+FEEDBACK_SEVERITIES = {"low", "medium", "high", "critical"}
 
 
 def _clean_child(child) -> dict:
@@ -242,7 +266,8 @@ def _bust_cache(doc, method=None):
         frappe.cache().delete_keys("pub_api:*")
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["POST"])
+@rate_limit(key="email", limit=30, seconds=60 * 60, methods="POST")
 def submit_feedback():
     """
     Whitelisted endpoint for public website feedback submissions.
@@ -250,51 +275,65 @@ def submit_feedback():
 
     POST /api/method/redcross_digital.api.submit_feedback
     """
-    if frappe.request and frappe.request.data:
-        try:
-            data = json.loads(frappe.request.data)
-        except Exception:
-            data = frappe.form_dict
-    else:
-        data = frappe.form_dict
+    data = _submission_payload()
+    if _is_honeypot_submission(data):
+        return _discarded_submission("Feedback received.")
 
-    submission_mode = data.get("submission_mode", "identified")
-    subject = data.get("subject")
-    description = data.get("description")
-    feedback_category = data.get("feedback_category", "other")
-    stakeholder_type = data.get("stakeholder_type", "community_member")
+    submission_mode = _submission_choice(
+        data, "submission_mode", FEEDBACK_SUBMISSION_MODES, "identified"
+    )
 
-    if not subject or not description:
-        frappe.throw("Subject and Description are required fields.")
+    full_name = _submission_text(data, "full_name", 140, required=submission_mode == "identified")
+    email = _submission_email(data, required=submission_mode == "identified")
+    phone = _submission_phone(data)
+    stakeholder_type = _submission_choice(
+        data, "stakeholder_type", FEEDBACK_STAKEHOLDER_TYPES, default="community_member"
+    )
+    stakeholder_type_other = _submission_text(data, "stakeholder_type_other", 140)
+    if stakeholder_type == "other_stakeholder" and not stakeholder_type_other:
+        frappe.throw("Please specify your stakeholder type.", frappe.ValidationError)
+
+    feedback_category = _submission_choice(
+        data, "feedback_category", FEEDBACK_CATEGORIES, default="other"
+    )
+    platform_used = _submission_choice(
+        data, "platform_used", FEEDBACK_PLATFORMS, default="web"
+    )
+    severity = _submission_choice(data, "severity", FEEDBACK_SEVERITIES, default="medium")
+    subject = _submission_text(data, "subject", 140, required=True)
+    description = _submission_text(data, "description", 12000, required=True, multiline=True)
+    suggestion = _submission_text(data, "suggestion", 6000, multiline=True)
+    privacy_accepted = _submission_bool(data, "privacy_accepted", required=True)
+    if not privacy_accepted:
+        frappe.throw("You must accept the privacy notice to submit feedback.", frappe.ValidationError)
 
     doc = frappe.get_doc({
         "doctype": "Feedback",
         "submission_mode": submission_mode,
-        "full_name": data.get("full_name") if submission_mode == "identified" else "Anonymous",
-        "email": data.get("email") if submission_mode == "identified" else "",
-        "phone": data.get("phone") if submission_mode == "identified" else "",
+        "full_name": full_name if submission_mode == "identified" else "Anonymous",
+        "email": email if submission_mode == "identified" else "",
+        "phone": phone if submission_mode == "identified" else "",
         "stakeholder_type": stakeholder_type,
-        "stakeholder_type_other": data.get("stakeholder_type_other"),
-        "organisation": data.get("organisation"),
-        "country": data.get("country"),
-        "region": data.get("region"),
-        "digital_service": data.get("digital_service"),
-        "project": data.get("project"),
-        "platform_used": data.get("platform_used", "web"),
+        "stakeholder_type_other": stakeholder_type_other,
+        "organisation": _submission_text(data, "organisation", 140),
+        "country": _submission_text(data, "country", 140),
+        "region": _submission_text(data, "region", 140),
+        "digital_service": _submission_text(data, "digital_service", 140),
+        "project": _submission_text(data, "project", 140),
+        "platform_used": platform_used,
         "feedback_category": feedback_category,
-        "severity": data.get("severity", "medium"),
+        "severity": severity,
         "subject": subject,
         "description": description,
-        "suggestion": data.get("suggestion"),
-        "accessibility_impacted": 1 if data.get("accessibility_impacted") else 0,
-        "accessibility_area": data.get("accessibility_area"),
-        "consent_to_contact": 1 if data.get("consent_to_contact") else 0,
-        "privacy_accepted": 1 if data.get("privacy_accepted") else 0,
+        "suggestion": suggestion,
+        "accessibility_impacted": _submission_bool(data, "accessibility_impacted"),
+        "accessibility_area": _submission_text(data, "accessibility_area", 2000, multiline=True),
+        "consent_to_contact": _submission_bool(data, "consent_to_contact"),
+        "privacy_accepted": 1,
         "status": "new",
     })
 
     doc.insert(ignore_permissions=True)
-    frappe.db.commit()
 
     return {
         "status": "success",
@@ -304,59 +343,164 @@ def submit_feedback():
 
 
 def _submission_payload():
-    """Read a JSON submission body, falling back to form fields."""
-    if frappe.request and frappe.request.data:
-        try:
-            return json.loads(frappe.request.data)
-        except (TypeError, ValueError):
-            pass
-    return frappe.form_dict
+    """Read a bounded JSON or form submission and require an object payload."""
+    request = frappe.request
+    if request:
+        if request.method.upper() != "POST":
+            frappe.throw("Submissions must use POST.", frappe.ValidationError)
+
+        content_length = request.content_length
+        if content_length and content_length > MAX_SUBMISSION_BODY_BYTES:
+            frappe.throw("Submission is too large.", frappe.ValidationError)
+
+        raw_body = request.get_data(cache=True)
+        if len(raw_body) > MAX_SUBMISSION_BODY_BYTES:
+            frappe.throw("Submission is too large.", frappe.ValidationError)
+
+        if raw_body and request.is_json:
+            try:
+                data = json.loads(raw_body)
+            except (TypeError, ValueError):
+                frappe.throw("Submission must contain valid JSON.", frappe.ValidationError)
+        else:
+            data = dict(frappe.form_dict)
+    else:
+        data = dict(frappe.form_dict)
+
+    if not isinstance(data, dict):
+        frappe.throw("Submission must be a JSON object.", frappe.ValidationError)
+    data.pop("cmd", None)
+    return data
 
 
-def _required_submission_fields(data, fields):
-    missing = [field for field in fields if not str(data.get(field) or "").strip()]
-    if missing:
-        frappe.throw("Required fields: " + ", ".join(missing))
+def _submission_text(data, field, max_length, required=False, multiline=False):
+    value = data.get(field, "")
+    if value is None:
+        value = ""
+    if not isinstance(value, str):
+        frappe.throw(f"{field.replace('_', ' ').capitalize()} must be text.", frappe.ValidationError)
+
+    value = value.strip()
+    if required and not value:
+        frappe.throw(f"{field.replace('_', ' ').capitalize()} is required.", frappe.ValidationError)
+    if len(value) > max_length:
+        frappe.throw(
+            f"{field.replace('_', ' ').capitalize()} must be {max_length} characters or fewer.",
+            frappe.ValidationError,
+        )
+    if "\x00" in value or (not multiline and ("\n" in value or "\r" in value)):
+        frappe.throw(f"{field.replace('_', ' ').capitalize()} contains invalid characters.", frappe.ValidationError)
+    return value
 
 
-@frappe.whitelist(allow_guest=True)
+def _submission_email(data, required=True):
+    email = _submission_text(data, "email", 140, required=required)
+    if not email:
+        return ""
+
+    normalized = validate_email_address(email, throw=True)
+    if not normalized or "," in normalized:
+        frappe.throw("Enter one valid email address.", frappe.ValidationError)
+    return normalized
+
+
+def _submission_phone(data):
+    phone = _submission_text(data, "phone", 32)
+    if phone:
+        digits = re.sub(r"\D", "", phone)
+        if not re.fullmatch(r"\+?[0-9][0-9\s().-]*", phone) or not 7 <= len(digits) <= 15:
+            frappe.throw("Enter a valid phone number.", frappe.ValidationError)
+    return phone
+
+
+def _submission_choice(data, field, choices, default):
+    value = _submission_text(data, field, 140) or default
+    if value not in choices:
+        frappe.throw(f"Invalid {field.replace('_', ' ')} selection.", frappe.ValidationError)
+    return value
+
+
+def _submission_bool(data, field, required=False):
+    value = data.get(field)
+    if value is None or value == "":
+        if required:
+            frappe.throw(f"{field.replace('_', ' ').capitalize()} is required.", frappe.ValidationError)
+        return 0
+    if value in (True, 1, "1", "true", "True", "yes", "on"):
+        return 1
+    if value in (False, 0, "0", "false", "False", "no", "off"):
+        return 0
+    frappe.throw(f"{field.replace('_', ' ').capitalize()} must be true or false.", frappe.ValidationError)
+
+
+def _is_honeypot_submission(data):
+    """Silently discard submissions that filled the contact form's hidden field."""
+    value = data.get("website_url")
+    return bool(str(value or "").strip())
+
+
+def _discarded_submission(message):
+    """Return the normal success shape to avoid helping simple bots adapt."""
+    return {"status": "success", "name": None, "message": message}
+
+
+@frappe.whitelist(allow_guest=True, methods=["POST"])
+@rate_limit(key="email", limit=10, seconds=60 * 60, methods="POST")
 def submit_inquiry():
     """Persist a public general contact inquiry without granting Guest DocType access."""
     data = _submission_payload()
-    _required_submission_fields(data, ("full_name", "email", "subject", "message"))
+    if _is_honeypot_submission(data):
+        return _discarded_submission("Inquiry received.")
+
+    full_name = _submission_text(data, "full_name", 140, required=True)
+    email = _submission_email(data)
+    phone = _submission_phone(data)
+    organization = _submission_text(data, "organization", 140)
+    subject = _submission_text(data, "subject", 140, required=True)
+    message = _submission_text(data, "message", 10000, required=True, multiline=True)
     doc = frappe.get_doc({
         "doctype": "Inquiry",
-        "full_name": str(data["full_name"]).strip(),
-        "email": str(data["email"]).strip(),
-        "phone": str(data.get("phone") or "").strip(),
-        "organization": str(data.get("organization") or "").strip(),
-        "subject": str(data["subject"]).strip(),
-        "message": str(data["message"]).strip(),
+        "full_name": full_name,
+        "email": email,
+        "phone": phone,
+        "organization": organization,
+        "subject": subject,
+        "message": message,
         "status": "New",
         "submitted_at": frappe.utils.now_datetime(),
     })
     doc.insert(ignore_permissions=True)
-    frappe.db.commit()
     return {"status": "success", "name": doc.name, "message": "Inquiry saved."}
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["POST"])
+@rate_limit(key="email", limit=10, seconds=60 * 60, methods="POST")
 def submit_partnership_proposal():
     """Persist a public partnership proposal without granting Guest DocType access."""
     data = _submission_payload()
-    _required_submission_fields(data, ("organization", "contact_person", "email", "collaboration_area", "proposal_title", "proposal_summary"))
+    if _is_honeypot_submission(data):
+        return _discarded_submission("Proposal received.")
+
+    organization = _submission_text(data, "organization", 140, required=True)
+    contact_person = _submission_text(data, "contact_person", 140, required=True)
+    email = _submission_email(data)
+    phone = _submission_phone(data)
+    collaboration_area = _submission_text(data, "collaboration_area", 140, required=True)
+    proposal_title = _submission_text(data, "proposal_title", 140, required=True)
+    proposal_summary = _submission_text(
+        data, "proposal_summary", 12000, required=True, multiline=True
+    )
     doc = frappe.get_doc({
         "doctype": "Partnership Proposal",
-        "organization": str(data["organization"]).strip(),
-        "contact_person": str(data["contact_person"]).strip(),
-        "email": str(data["email"]).strip(),
-        "phone": str(data.get("phone") or "").strip(),
-        "collaboration_area": str(data["collaboration_area"]).strip(),
-        "proposal_title": str(data["proposal_title"]).strip(),
-        "proposal_summary": str(data["proposal_summary"]).strip(),
+        "organization": organization,
+        "contact_person": contact_person,
+        "email": email,
+        "phone": phone,
+        "collaboration_area": collaboration_area,
+        "proposal_title": proposal_title,
+        "proposal_summary": proposal_summary,
         "status": "New",
         "submitted_at": frappe.utils.now_datetime(),
     })
     doc.insert(ignore_permissions=True)
-    frappe.db.commit()
     return {"status": "success", "name": doc.name, "message": "Partnership proposal saved."}
