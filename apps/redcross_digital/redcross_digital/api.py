@@ -65,6 +65,7 @@ JSON_FIELDS = {
 CACHE_TTL = 300          # seconds
 MAX_LIMIT = 500
 MAX_SUBMISSION_BODY_BYTES = 24 * 1024
+PUBLISHABLE_DOCTYPES = set(PUBLIC_DOCTYPES) - {"Site"}
 
 FEEDBACK_SUBMISSION_MODES = {"identified", "anonymous"}
 FEEDBACK_STAKEHOLDER_TYPES = {
@@ -141,6 +142,30 @@ def _assert_public(doctype: str):
         )
 
 
+def _publication_filters(doctype: str, filters=None):
+    """Always restrict publication-aware content to records visible on the site."""
+    if doctype not in PUBLISHABLE_DOCTYPES or not frappe.get_meta(doctype).has_field("publication_status"):
+        return filters
+
+    published_filter = [doctype, "publication_status", "=", "Published"]
+    if isinstance(filters, dict):
+        requested_status = filters.get("publication_status")
+        if requested_status is not None and requested_status != "Published":
+            return [
+                published_filter,
+                [doctype, "publication_status", "=", requested_status],
+            ]
+        filters = dict(filters)
+        # A caller may filter on other fields, but cannot broaden publication visibility.
+        filters["publication_status"] = "Published"
+        return filters
+    if filters is None:
+        return [published_filter]
+    if not isinstance(filters, list):
+        frappe.throw("Filters must be an object or list.", frappe.ValidationError)
+    return [*filters, published_filter]
+
+
 @frappe.whitelist(allow_guest=True)
 def list_docs(doctype: str, limit: int = 100, start: int = 0, filters: str = None):
     """
@@ -154,8 +179,9 @@ def list_docs(doctype: str, limit: int = 100, start: int = 0, filters: str = Non
     limit = max(1, min(cint(limit) or 100, MAX_LIMIT))
     start = max(0, cint(start) or 0)
     parsed_filters = frappe.parse_json(filters) if filters else None
+    parsed_filters = _publication_filters(doctype, parsed_filters)
 
-    cache_key = f"pub_api:list:{doctype}:{limit}:{start}:{filters or ''}"
+    cache_key = f"pub_api:list:v2:{doctype}:{limit}:{start}:{filters or ''}"
     cached = frappe.cache().get_value(cache_key)
     if cached:
         return cached
@@ -166,7 +192,7 @@ def list_docs(doctype: str, limit: int = 100, start: int = 0, filters: str = Non
         filters=parsed_filters,
         limit_page_length=limit,
         limit_start=start,
-        order_by="creation desc",
+        order_by="sort_order asc, creation desc" if frappe.get_meta(doctype).has_field("sort_order") else "creation desc",
     )
 
     total = (
@@ -196,7 +222,11 @@ def get_doc(doctype: str, name: str):
     """
     _assert_public(doctype)
 
-    cache_key = f"pub_api:doc:{doctype}:{name}"
+    if doctype in PUBLISHABLE_DOCTYPES and frappe.get_meta(doctype).has_field("publication_status"):
+        if frappe.db.get_value(doctype, name, "publication_status") != "Published":
+            frappe.throw("Not found", frappe.DoesNotExistError)
+
+    cache_key = f"pub_api:doc:v2:{doctype}:{name}"
     cached = frappe.cache().get_value(cache_key)
     if cached:
         return cached
@@ -241,18 +271,20 @@ def list_all():
     """
     # Version the key so cached responses from earlier releases cannot keep returning
     # protected submission records that are no longer in the public allowlist.
-    cache_key = "pub_api:list_all:v2"
+    cache_key = "pub_api:list_all:v3"
     cached = frappe.cache().get_value(cache_key)
     if cached:
         return cached
 
     out = {}
     for dt in PUBLIC_DOCTYPES:
+        filters = _publication_filters(dt)
         rows = frappe.get_all(
             dt,
             fields=["*"],
+            filters=filters,
             limit_page_length=1000,
-            order_by="creation desc",
+            order_by="sort_order asc, creation desc" if frappe.get_meta(dt).has_field("sort_order") else "creation desc",
         )
         out[dt] = [_clean(dt, r) for r in rows]
 

@@ -22,7 +22,10 @@
   "linkedin",
   "twitter",
   "github",
-  "featured"
+  "featured",
+  "publication_status",
+  "published_on",
+  "sort_order"
  ],
  "fields": [
   {
@@ -120,6 +123,33 @@
    "fieldname": "featured",
    "fieldtype": "Check",
    "label": "Featured"
+  },
+  {
+   "fieldname": "publication_status",
+   "fieldtype": "Select",
+   "label": "Publishing Status",
+   "options": "Draft\nPublished\nArchived",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Draft and Archived records stay private. Published records appear on the public website."
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Date",
+   "label": "Publication Date",
+   "description": "Optional date shown to website visitors."
+  },
+  {
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "default": "0",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Lower numbers appear first. Use unique values for a predictable display order."
   }
  ],
  "grid_page_length": 50,
@@ -157,8 +187,8 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
- "sort_field": "creation",
- "sort_order": "DESC",
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
  "states": [],
  "title_field": "full_name"
 }
